@@ -318,61 +318,50 @@
     /* ── Mobile optimisation ── */
     @media (max-width: 480px) {
       body {
-        padding: 0;
-        align-items: flex-end;
-        background-attachment: fixed;
+        padding: 1.2rem 0.8rem 1.2rem;
+        align-items: center;
+        min-height: 100svh;
       }
 
-      /* Full-screen bottom-sheet style on mobile */
       .flip-scene {
         max-width: 100%;
         width: 100%;
       }
+
       .card {
-        border-radius: 28px 28px 0 0;
-        border-bottom: none;
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.95) inset,
-          0 -8px 48px rgba(31,111,170,0.18);
-      }
-      @keyframes cardFlipOpen {
-        0%   { transform: translateY(100%); opacity:0; }
-        60%  { transform: translateY(-8px); opacity:1; }
-        80%  { transform: translateY(3px); }
-        100% { transform: translateY(0); opacity:1; }
+        border-radius: 20px;
       }
 
-      .hero { height: 52vw; min-height: 200px; }
-      .hero-name h1 { font-size: 2rem; }
-      .hero-name .en { font-size: 0.65rem; letter-spacing: 0.18em; }
+      .hero { height: 48vw; min-height: 190px; max-height: 240px; }
+      .hero-name h1 { font-size: 1.75rem; }
+      .hero-name .en { font-size: 0.62rem; letter-spacing: 0.16em; }
 
-      .body { padding: 1.4rem 1.4rem 0; }
+      .body { padding: 1.1rem 1.2rem 0; }
 
       .univ-line {
-        font-size: 0.6rem;
-        padding: 0.55rem 0.75rem;
+        font-size: 0.58rem;
+        padding: 0.5rem 0.7rem;
+        margin-bottom: 0.9rem;
       }
 
-      .tags { gap: 0.35rem; }
-      .tag { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+      .tags { gap: 0.3rem; margin-bottom: 0.9rem; }
+      .tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
 
-      .bio { font-size: 0.8rem; line-height: 1.85; }
+      .bio { font-size: 0.78rem; line-height: 1.8; margin-bottom: 1.1rem; }
 
-      .links { gap: 0.45rem; }
+      .links { gap: 0.4rem; margin-bottom: 1.1rem; }
       .link-btn {
-        font-size: 0.68rem;
-        padding: 0.45rem 0.85rem;
+        font-size: 0.66rem;
+        padding: 0.42rem 0.8rem;
       }
 
-      .surprise-wrap { padding: 0 0 2.4rem; }
-      .surprise-btn { font-size: 0.95rem; padding: 0.82rem; border-radius: 16px; }
+      .surprise-wrap { padding: 0 0 1.8rem; }
+      .surprise-btn { font-size: 0.9rem; padding: 0.72rem; border-radius: 14px; }
     }
 
-    /* Very small phones */
     @media (max-width: 360px) {
-      .hero-name h1 { font-size: 1.75rem; }
-      .body { padding: 1.2rem 1.2rem 0; }
-      .link-btn { font-size: 0.64rem; padding: 0.42rem 0.72rem; }
+      .hero-name h1 { font-size: 1.55rem; }
+      .body { padding: 1rem 1rem 0; }
     }
   </style>
 </head>
@@ -425,7 +414,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           Instagram
         </a>
-        <a class="link-btn" href="mailto:jillramon@gmail.com">
+        <a class="link-btn" href="/cdn-cgi/l/email-protection#305a595c5c42515d5f5e70575d51595c1e535f5d">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
           Email
         </a>
@@ -437,7 +426,7 @@
     </div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const palettes = [
       { a:'#ddeefa', b:'#c4ddf2', accent:'#1f6faa', accent2:'#4da0d4', sub:'#527090', muted:'#8aabca', line:'rgba(31,111,170,0.13)', tag:'rgba(31,111,170,0.07)', shadow:'rgba(31,111,170,0.16)' },
       { a:'#e6f4ee', b:'#cde9db', accent:'#156f50', accent2:'#2da078', sub:'#407a60', muted:'#7ab89a', line:'rgba(21,111,80,0.13)', tag:'rgba(21,111,80,0.07)', shadow:'rgba(21,111,80,0.16)' },
@@ -456,11 +445,4 @@
       r.style.setProperty('--accent2', p.accent2);
       r.style.setProperty('--sub',     p.sub);
       r.style.setProperty('--muted',   p.muted);
-      r.style.setProperty('--line',    p.line);
-      r.style.setProperty('--tag-bg',  p.tag);
-      r.style.setProperty('--shadow',  p.shadow);
-    }
-  </script>
-  </div></div>
-</body>
-</html>
+      r.style.setProperty('--line',    p.li
