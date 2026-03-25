@@ -440,6 +440,8 @@
       ci = (ci + 1) % palettes.length;
       const p = palettes[ci];
       const r = document.documentElement;
+      // Set directly on body for iOS Safari compatibility
+      document.body.style.background = 'linear-gradient(155deg, ' + p.a + ' 0%, ' + p.b + ' 100%)';
       r.style.setProperty('--bg-a',    p.a);
       r.style.setProperty('--bg-b',    p.b);
       r.style.setProperty('--accent',  p.accent);
