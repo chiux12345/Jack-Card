@@ -7,8 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg-a: #ddeefa;
-      --bg-b: #c4ddf2;
       --card: rgba(252,254,255,0.78);
       --text: #18263a;
       --sub: #527090;
@@ -22,14 +20,19 @@
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
+    #bg {
+      position: fixed; inset: 0; z-index: 0;
+      background: linear-gradient(155deg, #ddeefa 0%, #c4ddf2 100%);
+      transition: background 0.8s cubic-bezier(.4,0,.2,1);
+    }
+
     html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       padding: 3rem 1rem;
-      background: linear-gradient(155deg, var(--bg-a) 0%, var(--bg-b) 100%);
-      transition: background 0.9s cubic-bezier(.4,0,.2,1);
+      background: transparent;
       font-family: 'Noto Serif TC', serif;
       position: relative; overflow-x: hidden;
     }
@@ -366,6 +369,7 @@
   </style>
 </head>
 <body>
+  <div id="bg"></div>
   <div class="orb o1"></div>
   <div class="orb o2"></div>
   <div class="orb o3"></div>
@@ -414,7 +418,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           Instagram
         </a>
-        <a class="link-btn" href="mailto:jillramon@gmail.com">
+        <a class="link-btn" id="emailBtn" href="#">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
           Email
         </a>
@@ -427,6 +431,14 @@
   </div>
 
   <script>
+    // Set email href via JS to prevent Cloudflare encoding
+    document.addEventListener('DOMContentLoaded', function() {
+      var u = 'jillramon';
+      var d = 'gmail.com';
+      var btn = document.getElementById('emailBtn');
+      btn.href = 'mailto:' + u + '@' + d;
+    });
+
     const palettes = [
       { a:'#ddeefa', b:'#c4ddf2', accent:'#1f6faa', accent2:'#4da0d4', sub:'#527090', muted:'#8aabca', line:'rgba(31,111,170,0.13)', tag:'rgba(31,111,170,0.07)', shadow:'rgba(31,111,170,0.16)' },
       { a:'#e6f4ee', b:'#cde9db', accent:'#156f50', accent2:'#2da078', sub:'#407a60', muted:'#7ab89a', line:'rgba(21,111,80,0.13)', tag:'rgba(21,111,80,0.07)', shadow:'rgba(21,111,80,0.16)' },
@@ -441,9 +453,7 @@
       const p = palettes[ci];
       const r = document.documentElement;
       // Set directly on body for iOS Safari compatibility
-      document.body.style.background = 'linear-gradient(155deg, ' + p.a + ' 0%, ' + p.b + ' 100%)';
-      r.style.setProperty('--bg-a',    p.a);
-      r.style.setProperty('--bg-b',    p.b);
+      document.getElementById('bg').style.background = 'linear-gradient(155deg, ' + p.a + ' 0%, ' + p.b + ' 100%)';
       r.style.setProperty('--accent',  p.accent);
       r.style.setProperty('--accent2', p.accent2);
       r.style.setProperty('--sub',     p.sub);
@@ -453,6 +463,14 @@
       r.style.setProperty('--shadow',  p.shadow);
     }
   </script><script>
+    // Set email href via JS to prevent Cloudflare encoding
+    document.addEventListener('DOMContentLoaded', function() {
+      var u = 'jillramon';
+      var d = 'gmail.com';
+      var btn = document.getElementById('emailBtn');
+      btn.href = 'mailto:' + u + '@' + d;
+    });
+
     const palettes = [
       { a:'#ddeefa', b:'#c4ddf2', accent:'#1f6faa', accent2:'#4da0d4', sub:'#527090', muted:'#8aabca', line:'rgba(31,111,170,0.13)', tag:'rgba(31,111,170,0.07)', shadow:'rgba(31,111,170,0.16)' },
       { a:'#e6f4ee', b:'#cde9db', accent:'#156f50', accent2:'#2da078', sub:'#407a60', muted:'#7ab89a', line:'rgba(21,111,80,0.13)', tag:'rgba(21,111,80,0.07)', shadow:'rgba(21,111,80,0.16)' },
