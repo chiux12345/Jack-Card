@@ -247,6 +247,62 @@
       white-space: nowrap; flex-shrink: 0;
     }
 
+    /* portfolio */
+    .portfolio {
+      margin-bottom: 1.3rem;
+      animation: fadeUp 0.6s 1.05s both;
+    }
+    .portfolio-label {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.14em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .portfolio-label::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: var(--line);
+    }
+    .portfolio-links {
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .portfolio-link {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      padding: 0.68rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.55);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 1px 8px rgba(31,111,170,0.05);
+    }
+    .portfolio-link:hover {
+      background: var(--accent); color: #fff;
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 8px 24px var(--shadow);
+      border-color: var(--accent);
+    }
+    .portfolio-text { display: flex; flex-direction: column; gap: 0.18rem; }
+    .portfolio-name { font-size: 0.8rem; font-weight: 400; letter-spacing: 0.01em; }
+    .portfolio-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .portfolio-link:hover .portfolio-url { color: rgba(255,255,255,0.8); }
+    .portfolio-arrow {
+      width: 14px; height: 14px; flex-shrink: 0;
+      color: var(--muted);
+      transition: transform 0.28s cubic-bezier(.34,1.56,.64,1), color 0.25s;
+    }
+    .portfolio-link:hover .portfolio-arrow {
+      color: #fff;
+      transform: translate(2px, -2px);
+    }
+
     /* links */
     .links {
       display: flex; gap: 0.55rem; flex-wrap: wrap;
@@ -375,6 +431,11 @@
 
       .bio { font-size: 0.78rem; line-height: 1.8; margin-bottom: 1.1rem; }
 
+      .portfolio { margin-bottom: 1.1rem; }
+      .portfolio-link { padding: 0.5rem 0.7rem; }
+      .portfolio-name { font-size: 0.72rem; }
+      .portfolio-url { font-size: 0.58rem; }
+
       .links { gap: 0.4rem; margin-bottom: 1.1rem; }
       .link-btn {
         font-size: 0.66rem;
@@ -427,8 +488,28 @@
       </div>
 
       <p class="bio">
-                目前在天秤座法律事務所工讀，以 AI 輔助生成影像，透過後期剪輯打磨為短影音，讓法律知識透過創意內容走入大眾。同時負責規劃與建置官網，以技術力串聯創意與專業。
+                擅長短影音剪輯與 AI 影像生成，同時具備網站開發與維護能力，喜歡用技術把創意落地，讓內容以更貼近大眾的方式被看見。
       </p>
+
+      <div class="portfolio">
+        <div class="portfolio-label">網站作品集</div>
+        <div class="portfolio-links">
+          <a class="portfolio-link" href="https://www.justlaw.com.tw/" target="_blank">
+            <span class="portfolio-text">
+              <span class="portfolio-name">天秤座法律網</span>
+              <span class="portfolio-url">justlaw.com.tw</span>
+            </span>
+            <svg class="portfolio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+          <a class="portfolio-link" href="https://www.chaohsin.com/" target="_blank">
+            <span class="portfolio-text">
+              <span class="portfolio-name">天秤座法律事務所</span>
+              <span class="portfolio-url">chaohsin.com</span>
+            </span>
+            <svg class="portfolio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
+      </div>
 
       <div class="links">
         <a class="link-btn yt" href="https://www.youtube.com/channel/UCtE-wFX5D2OM3fu5RxPG-5Q" target="_blank">
