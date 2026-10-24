@@ -15,10 +15,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --card: rgba(252,254,255,0.78);
-      --text: #18263a;
-      --sub: #527090;
-      --muted: #8aabca;
+      --card: rgba(252,254,255,0.94);
+      --text: #0f1a2b;
+      --sub: #2f4a68;
+      --muted: #56779a;
       --accent: #1f6faa;
       --accent2: #4da0d4;
       --line: rgba(31,111,170,0.13);
@@ -30,8 +30,18 @@
 
     #bg {
       position: fixed; inset: 0; z-index: 0;
-      background: linear-gradient(155deg, #ddeefa 0%, #c4ddf2 100%);
+      background:
+        radial-gradient(ellipse at 20% 15%, rgba(77,110,200,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(120,70,180,0.25) 0%, transparent 50%),
+        linear-gradient(160deg, #070b1f 0%, #0d1638 55%, #141a40 100%);
       transition: background 0.8s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── Starfield ── */
+    #sky, #stars {
+      position: fixed; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
     }
 
     html { scroll-behavior: smooth; }
@@ -54,7 +64,7 @@
     }
 
     /* ── Orbs ── */
-    .orb {
+    .orb { opacity: 0.25;
       position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
       transition: background 0.9s cubic-bezier(.4,0,.2,1);
     }
@@ -454,6 +464,8 @@
 </head>
 <body>
   <div id="bg"></div>
+  <canvas id="sky"></canvas>
+  <canvas id="stars"></canvas>
   <div class="orb o1"></div>
   <div class="orb o2"></div>
   <div class="orb o3"></div>
@@ -482,17 +494,17 @@
       </div>
 
       <div class="tags">
-        <span class="tag">🎬 短影音剪輯</span>
-        <span class="tag">🤖 AI 影片製作</span>
+        <span class="tag">🤖 AI 輔助開發</span>
         <span class="tag">🌐 網站開發</span>
+        <span class="tag">🎬 AI 影片製作</span>
       </div>
 
       <p class="bio">
-                擅長短影音剪輯與 AI 影像生成，同時具備網站開發與維護能力，喜歡用技術把創意落地，讓內容以更貼近大眾的方式被看見。
+        擅長運用 AI 輔助開發，獨立完成網站前後台建置與上線，也能以 AI 生成影片製作內容。喜歡用技術把想法落地。
       </p>
 
       <div class="portfolio">
-        <div class="portfolio-label">網站作品集</div>
+        <div class="portfolio-label">作品集</div>
         <div class="portfolio-links">
           <a class="portfolio-link" href="https://www.justlaw.com.tw/" target="_blank">
             <span class="portfolio-text">
@@ -505,6 +517,13 @@
             <span class="portfolio-text">
               <span class="portfolio-name">天秤座法律事務所</span>
               <span class="portfolio-url">chaohsin.com</span>
+            </span>
+            <svg class="portfolio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+          <a class="portfolio-link" href="https://www.youtube.com/@%E5%A4%A9%E7%A7%A4%E5%BA%A7%E6%B3%95%E5%BE%8B%E4%BA%8B%E5%8B%99%E6%89%80-2375/shorts" target="_blank">
+            <span class="portfolio-text">
+              <span class="portfolio-name">AI 法律短影音</span>
+              <span class="portfolio-url">youtube.com/@天秤座法律事務所</span>
             </span>
             <svg class="portfolio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
           </a>
@@ -524,10 +543,6 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
           Line
         </a>
-      </div>
-
-      <div class="surprise-wrap">
-        <button class="surprise-btn" onclick="spawnCapybaras()">✦ 點我驚喜 ✦</button>
       </div>
     </div>
   </div>
@@ -549,6 +564,206 @@
       { a:'#fcedf3', b:'#f5d5e5', accent:'#a82868', accent2:'#d04888', sub:'#804060', muted:'#c080a0', line:'rgba(168,40,104,0.13)', tag:'rgba(168,40,104,0.07)', shadow:'rgba(168,40,104,0.16)' },
     ];
     let ci = 0;
+
+    // ── Realistic night sky ──
+    (function() {
+      var sky = document.getElementById('sky');
+      var cv = document.getElementById('stars');
+      var sctx = sky.getContext('2d');
+      var ctx = cv.getContext('2d');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var w, h, dpr, D, layer, lctx, stars = [], meteors = [];
+      var ROT = 0.0022;              // rad/s — slow sky rotation
+      var seed = 7;
+      function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+      function gauss() { return (rnd() + rnd() + rnd() + rnd() - 2) / 2; }
+
+      // stellar colour by spectral class (weighted toward cooler, like the real sky)
+      var classes = [
+        [0.03, [155,176,255]], [0.10, [170,191,255]], [0.22, [202,215,255]],
+        [0.40, [248,247,255]], [0.62, [255,244,234]], [0.85, [255,222,180]], [1.00, [255,204,140]]
+      ];
+      function starColor() {
+        var r = rnd();
+        for (var i = 0; i < classes.length; i++) if (r <= classes[i][0]) return classes[i][1];
+        return classes[classes.length-1][1];
+      }
+      // Milky Way band: a tilted line through the oversized square
+      var bandAngle = -0.62, bandOffset = 0.06;
+      function bandDist(x, y) {
+        var cx = x / D - 0.5, cy = y / D - 0.5;
+        return cx * Math.sin(bandAngle) - cy * Math.cos(bandAngle) + bandOffset;
+      }
+
+      function buildLayer() {
+        layer = document.createElement('canvas');
+        layer.width = D * dpr; layer.height = D * dpr;
+        lctx = layer.getContext('2d');
+        lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        seed = 7;
+        // nebular glow of the galactic band
+        var blobs = Math.round(D / 6);
+        for (var i = 0; i < blobs; i++) {
+          var t = rnd() * 1.4 - 0.2;
+          var off = gauss() * 0.07;
+          var bx = D * (0.5 + (t - 0.5) * Math.cos(bandAngle) - off * Math.sin(bandAngle)) ;
+          var by = D * (0.5 + (t - 0.5) * Math.sin(bandAngle) + off * Math.cos(bandAngle)) - bandOffset * D * Math.cos(bandAngle);
+          var r = D * (0.03 + rnd() * 0.09);
+          var core = Math.abs(t - 0.55) < 0.18;
+          var col = core && rnd() < 0.5 ? '255,214,170' : (rnd() < 0.35 ? '150,120,210' : '120,150,230');
+          var a = (core ? 0.04 : 0.022) * (0.5 + rnd());
+          var g = lctx.createRadialGradient(bx, by, 0, bx, by, r);
+          g.addColorStop(0, 'rgba(' + col + ',' + a + ')');
+          g.addColorStop(1, 'rgba(' + col + ',0)');
+          lctx.fillStyle = g;
+          lctx.beginPath(); lctx.arc(bx, by, r, 0, Math.PI * 2); lctx.fill();
+        }
+        // dark dust lanes
+        lctx.globalCompositeOperation = 'source-over';
+        for (var k = 0; k < Math.round(D / 14); k++) {
+          var tt = rnd() * 1.2 - 0.1, o2 = gauss() * 0.03;
+          var dx = D * (0.5 + (tt - 0.5) * Math.cos(bandAngle) - o2 * Math.sin(bandAngle));
+          var dy = D * (0.5 + (tt - 0.5) * Math.sin(bandAngle) + o2 * Math.cos(bandAngle)) - bandOffset * D * Math.cos(bandAngle);
+          var dr = D * (0.015 + rnd() * 0.04);
+          var dg = lctx.createRadialGradient(dx, dy, 0, dx, dy, dr);
+          dg.addColorStop(0, 'rgba(2,3,10,0.4)');
+          dg.addColorStop(1, 'rgba(3,4,12,0)');
+          lctx.fillStyle = dg;
+          lctx.beginPath(); lctx.arc(dx, dy, dr, 0, Math.PI * 2); lctx.fill();
+        }
+        // faint background stars, dense along the band
+        var faint = Math.round(D * D / 140);
+        for (var j = 0; j < faint; j++) {
+          var x = rnd() * D, y = rnd() * D;
+          var bd = Math.abs(bandDist(x, y));
+          if (bd > 0.1 && rnd() < 0.7) continue;
+          var c = starColor();
+          var mag = Math.pow(rnd(), 2.2);
+          lctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (0.22 + mag * 0.55) + ')';
+          var s = 0.5 + mag * 0.6;
+          lctx.fillRect(x, y, s, s);
+        }
+        // star clouds of the Milky Way: many tiny stars hugging the band
+        var cloud = Math.round(D * D / 55);
+        for (var q = 0; q < cloud; q++) {
+          var ct = rnd() * 1.3 - 0.15, co = gauss() * 0.075;
+          var qx = D * (0.5 + (ct - 0.5) * Math.cos(bandAngle) - co * Math.sin(bandAngle));
+          var qy = D * (0.5 + (ct - 0.5) * Math.sin(bandAngle) + co * Math.cos(bandAngle)) - bandOffset * D * Math.cos(bandAngle);
+          var qc = Math.abs(ct - 0.55) < 0.2 && rnd() < 0.5 ? [255,226,190] : [215,225,255];
+          lctx.fillStyle = 'rgba(' + qc[0] + ',' + qc[1] + ',' + qc[2] + ',' + (0.08 + rnd() * 0.32) + ')';
+          var qs = 0.4 + rnd() * 0.5;
+          lctx.fillRect(qx, qy, qs, qs);
+        }
+        // twinkling (live) stars — magnitude follows a steep power law
+        stars = [];
+        var n = Math.round(D * D / 3200);
+        for (var m = 0; m < n; m++) {
+          var p = Math.pow(rnd(), 5);           // most faint, few bright
+          stars.push({
+            x: rnd() * D, y: rnd() * D,
+            r: 0.45 + p * 1.9,
+            b: 0.35 + p * 0.65,
+            c: starColor(),
+            ph: rnd() * 6.283, f1: 1.5 + rnd() * 3.5, f2: 3 + rnd() * 6,
+            spike: p > 0.9
+          });
+        }
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth; h = window.innerHeight;
+        D = Math.ceil(Math.sqrt(w * w + h * h)) + 4;
+        [sky, cv].forEach(function(c) { c.width = w * dpr; c.height = h * dpr; });
+        sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildLayer();
+      }
+
+      function spawnMeteor() {
+        var ang = 0.35 + rnd() * 0.5;
+        meteors.push({ x: w * (0.3 + Math.random() * 0.7), y: h * Math.random() * 0.45,
+          vx: -Math.cos(ang) * (9 + Math.random() * 6), vy: Math.sin(ang) * (9 + Math.random() * 6),
+          len: 90 + Math.random() * 140, life: 1 });
+      }
+
+      var t0 = performance.now();
+      function draw(now) {
+        var t = (now - t0) / 1000;
+        var rot = reduce ? 0 : t * ROT;
+        // base sky
+        sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var g = sctx.createRadialGradient(w * 0.5, h * 1.1, 0, w * 0.5, h * 1.1, Math.max(w, h) * 1.3);
+        g.addColorStop(0, '#0f1630'); g.addColorStop(0.45, '#070b1c'); g.addColorStop(1, '#020309');
+        sctx.fillStyle = g; sctx.fillRect(0, 0, w, h);
+        // rotating static layer (nebula + faint stars)
+        sctx.save();
+        sctx.translate(w / 2, h / 2); sctx.rotate(rot); sctx.translate(-D / 2, -D / 2);
+        sctx.drawImage(layer, 0, 0, D, D);
+        sctx.restore();
+        // horizon airglow
+        var hz = sctx.createLinearGradient(0, h, 0, h * 0.6);
+        hz.addColorStop(0, 'rgba(40,60,110,0.22)'); hz.addColorStop(1, 'rgba(40,60,110,0)');
+        sctx.fillStyle = hz; sctx.fillRect(0, h * 0.6, w, h * 0.4);
+
+        // live stars
+        ctx.clearRect(0, 0, w, h);
+        ctx.save();
+        ctx.translate(w / 2, h / 2); ctx.rotate(rot); ctx.translate(-D / 2, -D / 2);
+        for (var i = 0; i < stars.length; i++) {
+          var s = stars[i];
+          // scintillation: fast, irregular, subtle
+          var tw = reduce ? 1 : 0.82 + 0.12 * Math.sin(t * s.f1 + s.ph) + 0.06 * Math.sin(t * s.f2 * 1.7 + s.ph * 2);
+          var a = s.b * tw, c = s.c;
+          if (s.r > 1.6) {
+            var gr = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 3.2);
+            gr.addColorStop(0, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (a * 0.22) + ')');
+            gr.addColorStop(1, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)');
+            ctx.fillStyle = gr;
+            ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 3.2, 0, 6.283); ctx.fill();
+          }
+          ctx.fillStyle = 'rgba(' + Math.min(255, c[0] + 30) + ',' + Math.min(255, c[1] + 30) + ',' + Math.min(255, c[2] + 30) + ',' + a + ')';
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 0.75, 0, 6.283); ctx.fill();
+          if (s.spike) {
+            var L = s.r * 6 * tw;
+            ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (a * 0.18) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(s.x - L, s.y); ctx.lineTo(s.x + L, s.y);
+            ctx.moveTo(s.x, s.y - L); ctx.lineTo(s.x, s.y + L);
+            ctx.stroke();
+          }
+        }
+        ctx.restore();
+
+        // rare meteors
+        if (!reduce) {
+          if (Math.random() < 0.0016) spawnMeteor();
+          for (var j = meteors.length - 1; j >= 0; j--) {
+            var m = meteors[j];
+            m.x += m.vx; m.y += m.vy; m.life -= 0.016;
+            if (m.life <= 0) { meteors.splice(j, 1); continue; }
+            var sp = Math.hypot(m.vx, m.vy);
+            var tx = m.x - m.vx / sp * m.len, ty = m.y - m.vy / sp * m.len;
+            var mg = ctx.createLinearGradient(m.x, m.y, tx, ty);
+            mg.addColorStop(0, 'rgba(235,242,255,' + (0.9 * m.life) + ')');
+            mg.addColorStop(0.25, 'rgba(170,200,255,' + (0.35 * m.life) + ')');
+            mg.addColorStop(1, 'rgba(170,200,255,0)');
+            ctx.strokeStyle = mg; ctx.lineWidth = 1.3; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(tx, ty); ctx.stroke();
+          }
+        }
+        if (!reduce) requestAnimationFrame(draw);
+      }
+
+      resize();
+      var rt;
+      window.addEventListener('resize', function() {
+        clearTimeout(rt);
+        rt = setTimeout(function() { resize(); if (reduce) draw(performance.now()); }, 150);
+      });
+      requestAnimationFrame(draw);
+    })();
 
 function spawnCapybaras() {
       var n = 7 + Math.floor(Math.random() * 5);
